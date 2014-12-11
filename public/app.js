@@ -83,7 +83,7 @@ grasshopper.controller('UserController', function($scope, $state, $http, userSer
   });
 
   $scope.logIn = function(){
-    $http({method: 'POST', url: "/sessions", data: {email: $scope.email, password: $scope.password}}).success(function(data) {
+    $http({method: 'POST', url: "http://grasshopperapi.herokuapp.com/sessions", data: {email: $scope.email, password: $scope.password}}).success(function(data) {
       $scope.email = "";
       $scope.password = "";
       $window.location.reload();
@@ -92,7 +92,7 @@ grasshopper.controller('UserController', function($scope, $state, $http, userSer
   };
 
   $scope.signUp = function(){
-    $http({method: 'POST', url: "/users", data: {email: $scope.email, name: $scope.name, password: $scope.password, password_confirmation: $scope.password_confirmation}}).success(function(data) {
+    $http({method: 'POST', url: "http://grasshopperapi.herokuapp.com/users", data: {email: $scope.email, name: $scope.name, password: $scope.password, password_confirmation: $scope.password_confirmation}}).success(function(data) {
       $scope.email = "";
       $scope.name = "";
       $scope.password = "";
@@ -103,7 +103,7 @@ grasshopper.controller('UserController', function($scope, $state, $http, userSer
   };
 
   $scope.logOut = function(){
-  $http({method: 'DELETE', url: "/sessions/" + $scope.user.id }).success(function(data) {
+  $http({method: 'DELETE', url: "http://grasshopperapi.herokuapp.com/sessions/" + $scope.user.id }).success(function(data) {
     console.log(data);
     $window.location.reload();
     $state.go('boards');
