@@ -1,0 +1,26 @@
+  <section class="margin-top">
+    <h4 ng-if="user.success == 'false'">You need to be signed in to do that.</h4>
+    <div ng-if="user.success == 'true'" class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-sm-9">
+          <div class="form-wrap">
+            <h1>Create New Board</h1>
+            <div class="form-container">
+              <form role="form" ng-submit="addBoard()" novalidate="novalidate" id="newboard-form" autocomplete="off">
+                <div class="form-group">
+                  <label for="title" class="sr-only">title</label>
+                  <input ng-model="board.title" type="text" class="form-control" placeholder="Board Title">
+                </div>
+                <div class="form-group">
+                  <label for="text" class="sr-only">text</label>
+                  <textarea rows="4" cols="50" ng-model="board.text" class="form-control" placeholder="Board description"></textarea>
+                </div>
+                <br>
+                <input type="submit" name="commit" class="btn-block btn btn-danger" value="Submit">
+              </form>
+            </div>
+          </div>
+        </div> <!-- /.col-xs-12 -->
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+  </section>

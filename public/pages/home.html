@@ -1,0 +1,20 @@
+<section class="margin-top">
+  <div class="mobile-menu hidden-md hidden-lg hidden-sm">
+    <a ui-sref="newBoard" class="btn new">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Board
+    </a>
+  </div>
+  <div>
+    <div ng-repeat="board in boards">
+      <h2>
+        <a id="{{board.id}}" ui-sref="viewBoard({id:board.id})" >{{board.title}}</a>
+      </h2>
+      <p>{{board.text}}</p>
+      <small>By {{board.user_name}}</small>
+      <div class='time'><small>On {{board.created_at}}</small></div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
