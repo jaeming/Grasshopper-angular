@@ -131,7 +131,7 @@ angular.module('grasshopper').config(function($stateProvider) {
     controller: 'BoardCreateController'
   }).state('editBoard', { // update
     url: '/boards/:id/edit',
-    templateUrl: 'pages/Board-edit.html',
+    templateUrl: 'pages/board-edit.html',
     controller: 'BoardViewController'
   }).state('viewMessage', { // show
     url: 'boards/:board_id/messages/:id/view',
