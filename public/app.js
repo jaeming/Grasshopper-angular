@@ -3,14 +3,14 @@ var grasshopper = angular.module('grasshopper', ['ui.router', 'ngAnimate', 'ngRe
 
 // Services
 angular.module('grasshopper.services', []).factory('Board', function($resource) {
-  return $resource('grasshopperapi.herokuapp.com/boards/:id', { id: '@id' }, {
+  return $resource('http://grasshopperapi.herokuapp.com/boards/:id', { id: '@id' }, {
     update: {
       method: 'PUT'
     }
   });
 })
 .factory('Message', function($resource) {
-  return $resource('grasshopperapi.herokuapp.com/boards/:board_id/messages/:id', { board_id: '@board_id',  id: '@id' }, {
+  return $resource('http://grasshopperapi.herokuapp.com/boards/:board_id/messages/:id', { board_id: '@board_id',  id: '@id' }, {
     update: {
       method: 'PUT'
     }
@@ -20,7 +20,7 @@ angular.module('grasshopper.services', []).factory('Board', function($resource) 
 
 grasshopper.service('userService', function($http) {
 this.getUser = function(){
-    var user = $http({method: 'GET', url: 'grasshopperapi.herokuapp.com/user/current_user.json'}).success(
+    var user = $http({method: 'GET', url: 'http://grasshopperapi.herokuapp.com/user/current_user.json'}).success(
         function(data) {
             return data;
         });
