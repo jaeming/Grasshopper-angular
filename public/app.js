@@ -1,8 +1,8 @@
-var grasshopper = angular.module('grasshopper', ['ui.router', 'ngAnimate', 'ngResource', 'grasshopper.services']);
-
-.config(['$httpProvider', function($httpProvider) {
+var grasshopper = angular.module('grasshopper', ['ui.router', 'ngAnimate', 'ngResource', 'grasshopper.services']).config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.withCredentials = true;
-}])
+}]);
+
+
 
 
 // Services
