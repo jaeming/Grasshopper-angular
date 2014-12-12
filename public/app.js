@@ -122,6 +122,16 @@ grasshopper.controller('UserController', function($scope, $state, $http, userSer
   };
 })
 
+grasshopper.controller('SearchController', function($scope, $http, $state, $stateParams, Message, $window) {
+$scope.search = function(){
+  $http({method: 'GET', url: "http://grasshopperapi.herokuapp.com/search/?query=" + $scope.search.query}).then(function(result) {
+    $scope.result = result.data;
+    console.log($scope.result);
+
+  });
+}
+});
+
 
 // Routes
 angular.module('grasshopper').config(function($stateProvider) {
@@ -152,6 +162,10 @@ angular.module('grasshopper').config(function($stateProvider) {
     url: '/account/',
     templateUrl: 'pages/account.html',
     controller: 'UserController'
+  }).state('search', {
+    url: '/search/',
+    templateUrl: 'pages/search.html',
+    controller: 'SearchController'
   });
 }).run(function($state) {
   $state.go('boards');

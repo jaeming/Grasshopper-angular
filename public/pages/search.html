@@ -1,0 +1,21 @@
+<div class="form-wrap">
+<h1>Search Boards & Messages</h1>
+  <div class="form-container">
+    <form role="form" ng-submit="search()" novalidate="novalidate" id="search-form" autocomplete="off">
+      <div class="form-group">
+        <input ng-model="search.query" type="text" class="form-control" placeholder="Search">
+      </div>
+      <br>
+      <input type="submit" name="commit" class="btn-block btn btn-danger" value="Submit">
+    </form>
+  </div>
+  <div ng-if='result.statusText === "OK"' class="results">
+    <h2>results</h2>
+    {{data.result.title}}
+    <div ng-repeat="result in results">
+      {{result.title}}
+    {{data.result.title}}
+    </div>
+      {{result.title}}
+  </div>
+</div>
