@@ -3,8 +3,6 @@ var grasshopper = angular.module('grasshopper', ['ui.router', 'ngAnimate', 'ngRe
 }]);
 
 
-
-
 // Services
 angular.module('grasshopper.services', []).factory('Board', function($resource) {
   return $resource('http://grasshopperapi.herokuapp.com/boards/:id', { id: '@id' }, {
@@ -64,7 +62,10 @@ grasshopper.controller('BoardCreateController', function($scope, $state, $stateP
  };
 });
 
-grasshopper.controller('MessageListController', function($scope, $state, $stateParams, $window, Message) {
+grasshopper.controller('MessageListController', function($scope, $http, $state, $stateParams, $window, Message, userService) {
+  userService.getUser().then(function (response) {
+    $scope.user = response.data;
+  });
   $scope.messages = Message.query({ board_id: $stateParams.id });
   $scope.message = new Message( {board_id: $stateParams.id} );
 
@@ -75,6 +76,12 @@ grasshopper.controller('MessageListController', function($scope, $state, $stateP
   //have switched to a reload here because was not able to post 2 messages concurrently as :id gets lost for some reason. It's not elegant but it fixes the bug for now.
   });
  };
+$scope.deleteMessage = function( board_id, id ){
+  $http({method: 'DELETE', url: "http://grasshopperapi.herokuapp.com/boards/" + board_id + "/messages/" + id }).success(
+    function(data) {
+      location.reload();
+    })
+  };
 });
 
 grasshopper.controller('MessageViewController', function($scope, $state, $stateParams, Message, $window) {
