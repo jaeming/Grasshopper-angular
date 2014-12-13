@@ -9,13 +9,12 @@
       <input type="submit" name="commit" class="btn-block btn btn-danger" value="Submit">
     </form>
   </div>
-  <div ng-if='result.statusText === "OK"' class="results">
-    <h2>results</h2>
-    {{data.result.title}}
+  <div ng-if="results" class="results">
+    <h2  class="board-title">results</h2>
     <div ng-repeat="result in results">
-      {{result.title}}
-    {{data.result.title}}
+      <a ui-sref="viewBoard({id:result.id})"><p>{{result.title}}</p></a>
+      <a ui-sref="viewBoard({id:result.id})"><p>{{result.text}}</p></a>
+       <a ui-sref="viewMessage({board_id:result.board_id, id:result.id})"><p>{{result.body}}</p></a>
     </div>
-      {{result.title}}
   </div>
 </div>

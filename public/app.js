@@ -71,9 +71,8 @@ grasshopper.controller('MessageListController', function($scope, $http, $state, 
 
   $scope.addMessage= function() {
   $scope.message.$save(function() {
-  // $scope.messages = Message.query({ board_id: $stateParams.id });
   location.reload();
-  //have switched to a reload here because was not able to post 2 messages concurrently as :id gets lost for some reason. It's not elegant but it fixes the bug for now.
+
   });
  };
 $scope.deleteMessage = function( board_id, id ){
@@ -124,12 +123,10 @@ grasshopper.controller('UserController', function($scope, $state, $http, userSer
 
 grasshopper.controller('SearchController', function($scope, $http, $state, $stateParams, Message, $window) {
 $scope.search = function(){
-  $http({method: 'GET', url: "http://grasshopperapi.herokuapp.com/search/?query=" + $scope.search.query}).then(function(result) {
-    $scope.result = result.data;
-    console.log($scope.result);
-
-  });
-}
+  $http({method: 'GET', url: "http://grasshopperapi.herokuapp.com/search/?query=" + $scope.search.query}).success(function(result) {
+    $scope.results = result;
+    });
+  }
 });
 
 
@@ -170,5 +167,7 @@ angular.module('grasshopper').config(function($stateProvider) {
 }).run(function($state) {
   $state.go('boards');
 });
+
+// $locationProvider.html5Mode(true);
 
 
