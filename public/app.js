@@ -19,7 +19,6 @@ angular.module('grasshopper.services', []).factory('Board', function($resource) 
   });
 });
 
-
 grasshopper.service('userService', function($http) {
 this.getUser = function(){
     var user = $http({method: 'GET', url: 'http://grasshopperapi.herokuapp.com/user/current_user.json'}).success(
@@ -28,6 +27,12 @@ this.getUser = function(){
         });
      return user;
 }});
+
+grasshopper.service('noticeService', function($window){
+  this.showPopup=function(notice){
+    return $window.confirm(notice);
+  }
+});
 
 
 // Controllers
@@ -48,6 +53,11 @@ grasshopper.controller('BoardViewController', function($scope, $state, $statePar
       $state.transitionTo('viewBoard', { id: $stateParams.id });
   });
  };
+ $scope.deleteBoard = function() {
+    $scope.board.$remove(function() {
+      $state.transitionTo('viewBoard', { id: $stateParams.id });
+  });
+ };
 });
 
 grasshopper.controller('BoardCreateController', function($scope, $state, $stateParams, $window, Board, userService) {
@@ -62,7 +72,7 @@ grasshopper.controller('BoardCreateController', function($scope, $state, $stateP
  };
 });
 
-grasshopper.controller('MessageListController', function($scope, $http, $state, $stateParams, $window, Message, userService) {
+grasshopper.controller('MessageListController', function($scope, $http, $state, $stateParams, $window, Message, Board, userService, noticeService) {
   userService.getUser().then(function (response) {
     $scope.user = response.data;
   });
@@ -75,12 +85,24 @@ grasshopper.controller('MessageListController', function($scope, $http, $state, 
 
   });
  };
-$scope.deleteMessage = function( board_id, id ){
-  $http({method: 'DELETE', url: "http://grasshopperapi.herokuapp.com/boards/" + board_id + "/messages/" + id }).success(
-    function(data) {
-      location.reload();
-    })
+
+  $scope.deleteMessage = function(board_id, id) {
+    if(noticeService.showPopup('Are you sure you want to delete this?')){
+      $scope.message.$delete(board_id, id).then(function() {
+        location.reload();
+      });
+    };
   };
+
+  // $scope.deleteMessage = function(){
+  // $scope.message.$remove({ board_id: $stateParams.board_id, id: $stateParams.id });
+
+
+  // $http({method: 'DELETE', url: "http://grasshopperapi.herokuapp.com/boards/" + board_id + "/messages/" + id }).success(
+  //   function(data) {
+  //     location.reload();
+  //   })
+  // };
 });
 
 grasshopper.controller('MessageViewController', function($scope, $state, $stateParams, Message, $window) {
