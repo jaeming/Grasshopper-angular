@@ -198,6 +198,9 @@ angular.module('grasshopper').config(function($stateProvider) {
     url: '/search/',
     templateUrl: 'pages/search.html',
     controller: 'SearchController'
+  }).state('api', {
+    url: '/api',
+    templateUrl: 'pages/api.html'
   });
 }).run(function($state) {
   $state.go('boards');

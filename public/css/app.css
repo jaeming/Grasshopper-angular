@@ -63,6 +63,15 @@ a:hover {
   text-align: center;
   margin-left: 8%;
 }
+
+.box-wide {
+  background: #fff;
+  border-radius: 9px;
+  padding-top: 8px;
+  padding-bottom: 18px;
+  max-width: 500px;
+  padding-left: 18px;
+}
 .tab {
   background: #fff;
   color: #898989;
