@@ -19,13 +19,19 @@ angular.module('grasshopper.services', []).factory('Board', function($resource) 
   });
 });
 
-grasshopper.service('userService', function($http) {
-  this.getUser = function(){
-    var user = $http({method: 'GET', url: 'http://grasshopperapi.herokuapp.com/user/current_user.json'}).success(
+grasshopper.service('userService', function($http, $q) {
+  var self = this;
+  self.user = null;
+  self.getUser = function(){
+    if (self.user != null)
+      {
+        return self.user;
+      }
+    self.user = $http({method: 'GET', url: 'http://grasshopperapi.herokuapp.com/user/current_user.json'}).success(
       function(data) {
         return data;
       });
-    return user;
+    return self.user;
   }});
 
 grasshopper.service('noticeService', function($window){
