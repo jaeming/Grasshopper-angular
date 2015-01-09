@@ -1,24 +1,21 @@
-## Grasshopper Front-end
-_____________
+# Grasshopper API
 
-### What is it?
-Grasshopper is a simple message board with a RAILS API back-end and a Front-end written in Angular JS.
+A messageboard API served up as JSON by **Ruby on Rails** and consumed by **AngularJS**.
 
-Here you will find the Grasshopper front-end, which I made as an example and exploration of a RESTful API being consumed by an AngularJS front-end.
+I started this project to learn more about building a RESTful API in Rails.
+Then, I began to experiment with building a front-end using AngularJS to better understand how both ends actually connect.
 
-Find the RAILs API counterpart here:
-https://github.com/jaeming/grasshopper
-__________________
-### how to make use of it?
+The API is live:
+grasshopperapi.herokuapp.com
 
-I've packaged the front-end here on top of Node.js(from the node.js sample app) to suit my own deployment needs and to demonstrate it's independance from the RAILS app that serves up the Grasshopper JSON.  See a live example here:
+Or the Angular Front-end can be found here:
 http://grassy.shufflebox.org
 
-The front-end app can be run from anywhere though. Assuming you have the node dependancies installed, just clone to your desktop and run ```node index.js```  .
-__________________
-#DOCUMENTATION:
-__________________
-#Grasshopper API
+Repo for angular front-end is found here:
+http://github.com/jaeming/Grasshopper-angular
+
+____________
+#DOCUMENTATION
 ____
 The grasshopper boards were built as a RAILS API in order for me to explore how Rails works as a RESTful JSON-based interface.
 
@@ -71,7 +68,7 @@ The endpoints available are:
 
 ```DELETE /sessions/:id```
 ###Search
-```GET    /search```
+```GET    /search?q=```
 
 ______
 #Usage
@@ -199,12 +196,11 @@ _____________
 ###Search:
 
 ######GET
-The search feature is a GET method rather than a POST action.
-Append *?query=* followed by the serach term to the url and a list of boards and/or messages will be returned with matching results.
+The search feature is a GET method. Use *search?q=* followed by the serach term to the url and a list of boards and/or messages will be returned with matching results.
 
 Example:
 
-```http://grasshopperapi.herokuapp.com/search?query=pizza```
+```http://grasshopperapi.herokuapp.com/search?q=pizza```
 
 returns all boards or messages that have the word 'pizza' in it.
 _____________
@@ -239,6 +235,11 @@ created_at: "2 days ago"
 _____________
 
 If you have any specific questions about the API or the Angular JS Front-end example, please get in touch at daylightsavings@gmail.com.
+
+
+
+
+
 
 
 
