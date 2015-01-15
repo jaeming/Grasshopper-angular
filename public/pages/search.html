@@ -14,11 +14,7 @@
     <div ng-repeat="result in results">
       <a ui-sref="viewBoard({id:result.id})"><p>{{result.title}}</p></a>
       <a ui-sref="viewBoard({id:result.id})"><p>{{result.text}}</p></a>
-      <a ui-sref="viewMessage({board_id:result.board_id, id:result.id})">
-        <p>{{result.body}}</p>
-      </a>
-
+       <a ui-sref="viewMessage({board_id:result.board_id, id:result.id})"><p>{{result.body}}</p></a>
     </div>
   </div>
-  <div ng-if="results == ''"><p>Nothing Found!</p></div>
 </div>
