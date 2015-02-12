@@ -139,13 +139,11 @@ If the user token was not able to be authenticated, it will return:
 ######/user/sign_out
 An authorized get request with the user's token to this endpoint will result in the user's token being set to nil, which effectively makes all authenticated requests unavailable thereafter.  You will need to sign the user in again to get a new token.  while performing the sign out action, you may wish to empty out your saved token on the client-side as well. Example with localstorage:
 
-```localStorage.removeItem('auth_token');```
+```
+localStorage.removeItem('auth_token');
+```
 
-
-
-_________
-
-###Boards & Messages:
+##Boards & Messages:
 
 ######GET
 
@@ -248,6 +246,5 @@ user_name: "lizaro",
 created_at: "2 days ago"
 ```
 
-_____________
 
 If you have any specific questions about the API or the Angular JS Front-end example, please get in touch at daylightsavings@gmail.com.
