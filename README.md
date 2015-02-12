@@ -147,24 +147,30 @@ localStorage.removeItem('auth_token');
 
 ######GET
 
-In the case of Boards and Messages, **Get** will retrieve an Index or a specific board or message if an id is supplied. Keep in mind that messages are nested within a specific board so you will need to specify both the board is as well as the message id for retrieving single messages.
+In the case of Boards and Messages, **Get** will retrieve an Index or a specific board or message if an id is supplied. Keep in mind that messages are nested within a specific board so you will need to specify both the board is as well as the message id for retrieving single messages. retrieving the board index:
 
-retrieving the board index:
-
-```http://grasshopperapi.herokuapp.com/boards```
+```
+http://grasshopperapi.herokuapp.com/boards
+```
 
 as opposed to retrieving a specific single board:
 
-```http://grasshopperapi.herokuapp.com/boards/2```
+```
+http://grasshopperapi.herokuapp.com/boards/2
+```
 
 message index:
 
-```http://grasshopperapi.herokuapp.com/boards/2/messages```
+```
+http://grasshopperapi.herokuapp.com/boards/2/messages
+```
 
 or a specific message:
 
 
-```http://grasshopperapi.herokuapp.com/boards/2/messages/4```
+```
+http://grasshopperapi.herokuapp.com/boards/2/messages/4
+```
 
 
 ######POST
@@ -214,7 +220,9 @@ The search feature is a GET method. Use *search?q=* followed by the serach term 
 
 Example:
 
-```http://grasshopperapi.herokuapp.com/search?q=pizza```
+```
+http://grasshopperapi.herokuapp.com/search?q=pizza
+```
 
 returns all boards or messages that have the word 'pizza' in it.
 _____________
@@ -223,7 +231,6 @@ _____________
 
 The following JSON data is served by Rails
 ######Boards:
-
 
 ```
 id: 6,
